@@ -12,7 +12,7 @@ function App() {
         we love liverpool
         </p>
         <h1>
-          Update by bung
+          Update by bungha
         </h1>
         <p>
           <a
