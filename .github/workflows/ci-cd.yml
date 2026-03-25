@@ -1,17 +1,17 @@
 name: React App CI/CD v2
 
-# กำหนดให้ Workflow ทำงานเมื่อมีการ Push โค้ดไปยัง Branch 'main'
 on:
   push:
     branches:
       - main
+  workflow_dispatch:   # ← เพิ่มบรรทัดนี้
 
 jobs:
   build-and-push-docker-image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4   # ← เปลี่ยนจาก v6 เป็น v4
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
@@ -27,8 +27,7 @@ jobs:
         with:
           context: .
           push: true
-          # เปลี่ยน 'your-username/your-repo-name' เป็นชื่อของคุณ
-          tags: natthaphumaree/devop880-pipeline:latest 
+          tags: natthaphumaree/devop880-pipeline:latest
 
   deploy:
     needs: build-and-push-docker-image
@@ -40,7 +39,6 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          # สคริปต์ที่จะไปรันบนเซิร์ฟเวอร์ของคุณเพื่อดึง Image ใหม่มาเปิด
           script: |
             docker pull natthaphumaree/devop880-pipeline:latest
             docker stop my-react-app || true
