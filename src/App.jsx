@@ -11,9 +11,7 @@ function App() {
         <p className="small">
         we love liverpool
         </p>
-        <img src="Liver2.jpg" className="App-logo" alt="logo" />
         <h1>
-          Update by bungha
         </h1>
         <p>
           <a
