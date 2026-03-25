@@ -28,7 +28,7 @@ jobs:
           context: .
           push: true
           # เปลี่ยน 'your-username/your-repo-name' เป็นชื่อของคุณ
-          tags: NatthaphumAree/devop880-Pipeline:latest 
+          tags: natthaphumAree/devop880-Pipeline:latest 
 
   deploy:
     needs: build-and-push-docker-image
@@ -42,4 +42,4 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           # สคริปต์ที่จะไปรันบนเซิร์ฟเวอร์ของคุณเพื่อดึง Image ใหม่มาเปิด
           script: |
-            docker pull NatthaphumAree/devop880-Pipeline:latest
+            docker pull natthaphumAree/devop880-Pipeline:latest
