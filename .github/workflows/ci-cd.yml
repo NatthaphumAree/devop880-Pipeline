@@ -1,4 +1,4 @@
-name: React App CI/CD
+name: React App CI/CD v2
 
 # กำหนดให้ Workflow ทำงานเมื่อมีการ Push โค้ดไปยัง Branch 'main'
 on:
