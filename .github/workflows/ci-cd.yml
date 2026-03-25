@@ -43,3 +43,7 @@ jobs:
           # สคริปต์ที่จะไปรันบนเซิร์ฟเวอร์ของคุณเพื่อดึง Image ใหม่มาเปิด
           script: |
             docker pull natthaphumaree/devop880-Pipeline:latest
+            docker stop my-react-app || true
+            docker rm my-react-app || true
+            docker run -d --name my-react-app -p 80:80 natthaphumaree/devop880-Pipeline:latest
+
