@@ -28,7 +28,7 @@ jobs:
           context: .
           push: true
           # เปลี่ยน 'your-username/your-repo-name' เป็นชื่อของคุณ
-          tags: natthaphumaree/devop880-Pipeline:latest 
+          tags: natthaphumaree/devop880-pipeline:latest 
 
   deploy:
     needs: build-and-push-docker-image
@@ -42,8 +42,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           # สคริปต์ที่จะไปรันบนเซิร์ฟเวอร์ของคุณเพื่อดึง Image ใหม่มาเปิด
           script: |
-            docker pull natthaphumaree/devop880-Pipeline:latest
+            docker pull natthaphumaree/devop880-pipeline:latest
             docker stop my-react-app || true
             docker rm my-react-app || true
-            docker run -d --name my-react-app -p 80:80 natthaphumaree/devop880-Pipeline:latest
-
+            docker run -d --name my-react-app -p 80:80 natthaphumaree/devop880-pipeline:latest
